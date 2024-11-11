@@ -38,7 +38,7 @@
             </ul></li>
               <li><a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown"><span class="avatar-status avatar-online"><img src="{{ asset('app-assets/images/logo/logokf.png') }}" alt="avatar"><i></i></span></a><ul class="dropdown-content" id="profile-dropdown" tabindex="0">
               {{-- <li tabindex="0"><a class="grey-text text-darken-1" href="{{route('dashboard.profile.editProfile')}}"><i class="material-icons">person_outline</i> Profile</a></li> --}}
-              <li tabindex="0"><a class="grey-text text-darken-1" href="{{url('dashboard/logout')}}"><i class="material-icons">keyboard_tab</i> Logout</a></li>
+              <li tabindex="0"><a class="grey-text text-darken-1" href="{{route('dashboard.logout')}}"><i class="material-icons">keyboard_tab</i> Logout</a></li>
             </ul></li>
               <!-- <li><a class="waves-effect waves-block waves-light sidenav-trigger" href="#" data-target="slide-out-right"><i class="material-icons">format_indent_increase</i></a></li> -->
             </ul>

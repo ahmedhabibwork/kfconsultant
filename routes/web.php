@@ -3,14 +3,17 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 Route::namespace('App\Http\Controllers\Auth')->group(function () {
-    Route::get('dashboard/login', 'LoginController@showLoginForm')->name('dashboard.login');
-    Route::post('dashboard/login', 'LoginController@login')->name('dashboard.login');
-    Route::get('dashboard/logout', 'LoginController@logout')->name('dashboard.logout');
+    Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
+    Route::get('dashboard/login', 'LoginController@showLoginForm')->name('login');
+    Route::post('dashboard/login', 'LoginController@login')->name('login');
+    Route::get('dashboard/logout', 'LoginController@logout')->name('logout');
 });
+});
+
 
 Route::group(['middleware' => ['auth']], function () {
 Route::namespace('App\Http\Controllers\Dashboard')->group(function () {
-Route::get('/', 'DashboardController@index')->name('admin');
+Route::get('/dashboard', 'DashboardController@index')->name('admin');
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function () {
 Route::get('/error-page', 'DashboardController@error_page')->name('error-page');
 
@@ -87,9 +90,7 @@ Route::get('/clear-cache', function () {
     Artisan::call('route:clear');
     return 'Application cache has been cleared';
 });
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 });
 Auth::routes();
